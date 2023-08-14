@@ -4,6 +4,7 @@ import {
 import Caller from '../config/Caller';
 import API from '../config/Url';
 import NEWS_REDUX_ACTION_TYPES from '../constants/NewsReducerConstants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * fetchNews(): Saga for fetching news data

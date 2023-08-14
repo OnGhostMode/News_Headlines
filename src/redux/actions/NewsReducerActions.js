@@ -13,7 +13,6 @@ const ACTION_TYPES = NEWS_REDUX_ACTION_TYPES;
  * @author VIVEK PS
  */
 export const fetchNewsData = () => {
-    console.log("------------- fetch====")
     return {
         type: ACTION_TYPES.FETCH_NEWS_DATA_REQUEST,
     };
@@ -25,7 +24,6 @@ export const fetchNewsData = () => {
  * @author VIVEK PS
  */
 export const clearNewsData = () => {
-    console.log("------------- clear====")
     return {
         type: ACTION_TYPES.FETCH_NEWS_DATA_CLEAR,
     };

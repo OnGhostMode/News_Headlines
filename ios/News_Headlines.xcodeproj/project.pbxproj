@@ -13,7 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-News_Headlines-News_HeadlinesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-News_Headlines-News_HeadlinesTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		78C22C432A8ACFDB005046B4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C22C422A8ACFDB005046B4 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,26 @@
 		5709B34CF0A7D63546082F79 /* Pods-News_Headlines.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News_Headlines.release.xcconfig"; path = "Target Support Files/Pods-News_Headlines/Pods-News_Headlines.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-News_Headlines-News_HeadlinesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News_Headlines-News_HeadlinesTests.debug.xcconfig"; path = "Target Support Files/Pods-News_Headlines-News_HeadlinesTests/Pods-News_Headlines-News_HeadlinesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-News_Headlines.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-News_Headlines.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = News_Headlines/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		78B9AE882A86C73100AB59DD /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
+		78B9AE892A86C73100AB59DD /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		78B9AE8A2A86C73100AB59DD /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
+		78B9AE8B2A86C73100AB59DD /* FontAwesome6_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Regular.ttf; sourceTree = "<group>"; };
+		78B9AE8C2A86C73100AB59DD /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
+		78B9AE8D2A86C73100AB59DD /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		78B9AE8E2A86C73100AB59DD /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialCommunityIcons.ttf; sourceTree = "<group>"; };
+		78B9AE8F2A86C73100AB59DD /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
+		78B9AE902A86C73100AB59DD /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
+		78B9AE912A86C73100AB59DD /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		78B9AE922A86C73100AB59DD /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
+		78B9AE932A86C73100AB59DD /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		78B9AE942A86C73100AB59DD /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		78B9AE952A86C73100AB59DD /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
+		78B9AE962A86C73100AB59DD /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
+		78B9AE972A86C73100AB59DD /* FontAwesome6_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Solid.ttf; sourceTree = "<group>"; };
+		78B9AE982A86C73100AB59DD /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		78B9AE992A86C73100AB59DD /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
+		78B9AE9A2A86C73100AB59DD /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		78C22C422A8ACFDB005046B4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-News_Headlines-News_HeadlinesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News_Headlines-News_HeadlinesTests.release.xcconfig"; path = "Target Support Files/Pods-News_Headlines-News_HeadlinesTests/Pods-News_Headlines-News_HeadlinesTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -86,12 +105,13 @@
 		13B07FAE1A68108700A75B9A /* News_Headlines */ = {
 			isa = PBXGroup;
 			children = (
+				78B9AE872A86C73100AB59DD /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				78C22C422A8ACFDB005046B4 /* Launch Screen.storyboard */,
 			);
 			name = News_Headlines;
 			sourceTree = "<group>";
@@ -104,6 +124,33 @@
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-News_Headlines-News_HeadlinesTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78B9AE872A86C73100AB59DD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				78B9AE882A86C73100AB59DD /* Fontisto.ttf */,
+				78B9AE892A86C73100AB59DD /* Octicons.ttf */,
+				78B9AE8A2A86C73100AB59DD /* Feather.ttf */,
+				78B9AE8B2A86C73100AB59DD /* FontAwesome6_Regular.ttf */,
+				78B9AE8C2A86C73100AB59DD /* Entypo.ttf */,
+				78B9AE8D2A86C73100AB59DD /* FontAwesome5_Brands.ttf */,
+				78B9AE8E2A86C73100AB59DD /* MaterialCommunityIcons.ttf */,
+				78B9AE8F2A86C73100AB59DD /* AntDesign.ttf */,
+				78B9AE902A86C73100AB59DD /* Foundation.ttf */,
+				78B9AE912A86C73100AB59DD /* Ionicons.ttf */,
+				78B9AE922A86C73100AB59DD /* FontAwesome5_Solid.ttf */,
+				78B9AE932A86C73100AB59DD /* FontAwesome5_Regular.ttf */,
+				78B9AE942A86C73100AB59DD /* FontAwesome.ttf */,
+				78B9AE952A86C73100AB59DD /* Zocial.ttf */,
+				78B9AE962A86C73100AB59DD /* EvilIcons.ttf */,
+				78B9AE972A86C73100AB59DD /* FontAwesome6_Solid.ttf */,
+				78B9AE982A86C73100AB59DD /* SimpleLineIcons.ttf */,
+				78B9AE992A86C73100AB59DD /* FontAwesome6_Brands.ttf */,
+				78B9AE9A2A86C73100AB59DD /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -200,7 +247,8 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -242,7 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				78C22C432A8ACFDB005046B4 /* Launch Screen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-News_Headlines-News_HeadlinesTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -459,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-News_Headlines-News_HeadlinesTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = News_HeadlinesTests/Info.plist;
