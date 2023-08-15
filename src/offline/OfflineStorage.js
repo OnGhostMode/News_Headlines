@@ -5,12 +5,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * @param {*} value 
  * @author VIVEK PS
  */
-const storeData = async (value) => {
+export const storeData = async (value) => {
     try {
         const jsonValue = JSON.stringify(value);
-        await AsyncStorage.setItem('store', jsonValue);
-    } catch (e) {
-        // saving error
+        await AsyncStorage.setItem('newsData', jsonValue);
+    } catch (error) {
+        console.log("------------ storeData error ", error)
     }
 };
 
@@ -19,11 +19,11 @@ const storeData = async (value) => {
  * @returns 
  * @author VIVEK PS
  */
-const getData = async () => {
+export const getData = async () => {
     try {
-        const jsonValue = await AsyncStorage.getItem('my-key');
+        const jsonValue = await AsyncStorage.getItem('newsData');
         return jsonValue != null ? JSON.parse(jsonValue) : null;
-    } catch (e) {
-        // error reading value
+    } catch (error) {
+        console.log("------------ getData error ", error)
     }
 };

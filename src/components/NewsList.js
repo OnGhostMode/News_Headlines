@@ -1,10 +1,21 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Animated, Dimensions, FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+    Animated,
+    Dimensions,
+    FlatList,
+    Image,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const { width } = Dimensions.get('window');
+
 const NewsList = ({ newsData, onDelete }) => {
     const navigation = useNavigation();
     const [pinnedData, setPinnedData] = useState(null)
@@ -53,6 +64,10 @@ const NewsList = ({ newsData, onDelete }) => {
         navigation.navigate('NewsScreen', { item: item })
     }
 
+    /**
+     * HeaderComponent(): Header componen for pinned card
+     * @author VIVEK PS
+     */
     const HeaderComponent = () => {
         return (
             pinnedData ?
@@ -67,26 +82,30 @@ const NewsList = ({ newsData, onDelete }) => {
         )
     }
 
+    /**
+     * renderItem(): Renders cards in flatlist avoiding the pinned card
+     * @param {*} item 
+     * @param {*} index 
+     * @returns 
+     * @author VIVEK PS
+     */
     const renderItem = ({ item, index }) => {
-        console.log("------------- index ", index)
         if (pinnedData?.title == item.title && pinnedData?.author == item.author) {
             return null
         }
         else {
-            if (pinnedData) {
-                if (index > 9) {
-                    return null
-                }
-                else {
-                    return (<RenderItemContent item={item} />)
-                }
-            }
-            else {
-                return (<RenderItemContent item={item} />)
-            }
+            return (
+                <RenderItemContent item={item} key={index} />
+            )
         }
     }
 
+    /**
+     * RenderLeftActions(): Renders the pin button on left swipe 
+     * @param {*} item 
+     * @returns 
+     * @author VIVEK PS
+     */
     const RenderLeftActions = (item) => {
         return (
             <TouchableOpacity style={styles.leftSwipeButton}
@@ -99,6 +118,12 @@ const NewsList = ({ newsData, onDelete }) => {
         );
     };
 
+    /**
+     * RenderRightActions(): Renders the pin button on right swipe 
+     * @param {*} item 
+     * @returns 
+     * @author VIVEK PS
+     */
     const RenderRightActions = (item) => {
         return (
             <TouchableOpacity style={styles.rightSwipeButton}
@@ -112,6 +137,12 @@ const NewsList = ({ newsData, onDelete }) => {
         );
     };
 
+    /**
+     * RenderItemContent(): Renders the flatlist card component
+     * @param {*} item 
+     * @returns 
+     * @author VIVEK PS
+     */
     const RenderItemContent = ({ item }) => {
         return (
             <TouchableOpacity style={styles.renderItem} onPress={() => openDetailsScreen(item)}>
@@ -139,7 +170,6 @@ const NewsList = ({ newsData, onDelete }) => {
                     <Image
                         style={styles.image}
                         source={{ uri: data.urlToImage } || require('../resources/placeholder_image.jpeg')}
-                        // defaultSource={require('../resources/placeholder_image.jpeg')}
                         loadingIndicatorSource={require('../resources/placeholder_image.jpeg')}
                     />
                 </ImageBackground>
@@ -171,6 +201,7 @@ const NewsList = ({ newsData, onDelete }) => {
                 initialNumToRender={10}
                 keyExtractor={(item, index) => index.toString()}
                 ListHeaderComponent={HeaderComponent}
+                extraData={newsData}
             />
         </View>
     )
@@ -181,19 +212,16 @@ export default NewsList
 const styles = StyleSheet.create({
     flatList: {
         flex: 1,
-        // backgroundColor: 'grey'
     },
     renderItem: {
         marginHorizontal: 20,
         marginVertical: 17,
         flex: 1,
-        // flexDirection: 'row',
         flexWrap: 'wrap',
         borderRadius: 10,
         borderWidth: 1,
         borderColor: 'lightgrey',
         overflow: 'hidden',
-
     },
     heading: {
         color: 'black',
@@ -207,11 +235,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         flex: 1,
         alignSelf: 'flex-end',
-        // backgroundColor:'red'
     },
     imageContainer: {
         flex: 1,
-        // backgroundColor: 'green',
         overflow: 'hidden',
         borderTopRightRadius: 10,
         borderTopLeftRadius: 10
@@ -220,15 +246,11 @@ const styles = StyleSheet.create({
         width: width - 40,
         height: 180,
         flex: 1,
-        // aspectRatio:1,
         resizeMode: 'cover',
-
-
     },
     detailsContainer: {
         flex: 1,
         padding: 10,
-        // backgroundColor: 'red',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         backgroundColor: '#F2F2F2'
@@ -304,5 +326,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
     },
-
 })

@@ -1,5 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { RefreshControl, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import {
+    RefreshControl,
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    useColorScheme,
+    View
+} from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,22 +23,30 @@ const Dashboard = () => {
     const newsReducerData = useSelector(state => state.NewsReducer.newsData)
     const [newsData, setNewsData] = useState([])
     const [isRefreshing, setRefreshing] = useState(false);
+    const [timerReset, setTimerReset] = useState(1);
 
+    /**
+     * backgroundStyle(): Dynamic background style on pull to refresh
+     */
     const backgroundStyle = {
         backgroundColor: isRefreshing ? '#3395ff' : '#FFFFFF',
     };
 
+    /**
+     * Initializes states on update of redux
+     * @author VIVEK PS
+     */
     useEffect(() => {
-        dispatch(fetchNewsData())
-        return () => {
+        try {
+            console.log("------------- updated newsReducerData ", newsReducerData)
+            newsReducerDataTemp = newsReducerData
+            let slicedArray = newsReducerDataTemp?.slice(0, 10);
+            setNewsData(slicedArray)
+            setRefreshing(false);
+            setTimerReset(Math.random(12))
+        } catch (error) {
+            console.log("------------- useeffect error ", error)
         }
-    }, [])
-
-    useEffect(() => {
-        console.log("------------- updated newsReducerData ", newsReducerData)
-        let slicedArray = newsReducerData?.slice(0, 10);
-        setNewsData(slicedArray)
-        setRefreshing(false);
     }, [newsReducerData])
 
     useEffect(() => {
@@ -40,11 +58,16 @@ const Dashboard = () => {
      * @author VIVEK PS
      */
     const onPullToRefresh = () => {
-        setRefreshing(true);
-        console.log("------------ isRefreshing")
-        dispatch(fetchNewsData())
+        try {
+            setTimerReset(Math.random(12))
+            setRefreshing(true);
+            console.log("------------ isRefreshing")
+            dispatch(fetchNewsData())
+        } catch (error) {
+            console.log("xxxxxxxxxxxxxxx onPullToRefresh error ", error)
+            setRefreshing(false)
+        }
     };
-
 
     /**
      * onDelete(): Actions to be performed on pressing delete icon
@@ -55,6 +78,45 @@ const Dashboard = () => {
         console.log("----------- onDelete ", item)
     }
 
+    /**
+     * Calls refresh list data every 10 seconds
+     * @author VIVEK PS
+     */
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            refreshListData()
+        }, 10000)
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [timerReset])
+
+    /**
+     * refreshListData(): Updates the list data by adding 5 new items to the top
+     * @author VIVEK PS
+     */
+    const refreshListData = async () => {
+        try {
+            let newsReducerDataTemp = newsReducerData
+            const shuffled = [...newsReducerDataTemp].sort(() => 0.5 - Math.random());
+            let selected = shuffled.slice(0, 5);
+            console.log("\n\n ------------selected ", selected)
+            console.log("------------newsData ", newsData)
+            let tempArray = []
+            await selected.map((item) => {
+                tempArray.push(item)
+            })
+            let newsDataTemp = newsData
+            await newsDataTemp.map((item) => {
+                tempArray.push(item)
+            })
+            console.log("------------tempArray ", tempArray)
+            setNewsData([...tempArray])
+        } catch (error) {
+            console.log("xxxxxxxxxxxxxxx refreshListData error ", error)
+
+        }
+    }
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
@@ -65,7 +127,7 @@ const Dashboard = () => {
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 style={backgroundStyle}
-                refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={onPullToRefresh} tintColor="#fff" />}
+                refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={() => onPullToRefresh()} tintColor="#fff" />}
             >
                 <View style={{
                     backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -73,13 +135,14 @@ const Dashboard = () => {
                     <View style={styles.refreshButtonContainer} >
                         <Text>Latest Headlines</Text>
                         <TouchableOpacity onPress={() => {
-                            dispatch(fetchNewsData())
+                            onPullToRefresh()
                         }}>
                             <Icon name="refresh" size={22} />
                         </TouchableOpacity>
                     </View>
 
                     <NewsList newsData={newsData} onDelete={onDelete} />
+
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -109,12 +172,10 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     mainView: {
-
     },
     refreshButtonContainer: {
         flex: 1,
         flexDirection: 'row',
-        // backgroundColor:'red',
         marginHorizontal: 20,
         alignItems: 'center',
         justifyContent: 'space-between',
