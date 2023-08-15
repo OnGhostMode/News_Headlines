@@ -8,28 +8,28 @@
 ```
 >   LinedIn: [Connect with Vivek](https://www.linkedin.com/in/vivek-ps-9555b8111)
 
-# Screens
-........
+# Screens\
+........\
    1. Dashboard screen
    2. News details screen
 
-# Dashboard Screen
-.................
+# Dashboard Screen\
+------------------\
 This screen contains the liist of news cards. After every 10 seconds, 5 random news would be added to the top of the lists.
 User can refresh the screen manually using pull to refresh or by pressing the refresh icon on the top left of the list.
 
-   1. News cards
-      ...........
-      Contains the basic details of a news
-      On taping the card, screen will navigate to news details screen, where the user can view the full details of that screen
-      News cards except the pinned card are equiped with swipe controls
-      On swiping from left, it reveals the pin to top option, on taping which pins that particular news card to top of the list
+   1. News cards\
+      ...........\
+      Contains the basic details of a news\
+      On taping the card, screen will navigate to news details screen, where the user can view the full details of that screen\
+      News cards except the pinned card are equiped with swipe controls\
+      On swiping from left, it reveals the pin to top option, on taping which pins that particular news card to top of the list\
 
-   2. Pinned cards
-      ............
-      Pinned card wont be removed on refreshing the data or adding random news after every 10nseconds
-      Pinned cards will stay on the screen, unless it is unpinned
-      To un pin a card, press on the un pin icon on the top left corner of the pinned card
+   2. Pinned cards\
+      ............\
+      Pinned card wont be removed on refreshing the data or adding random news after every 10nseconds\
+      Pinned cards will stay on the screen, unless it is unpinned\
+      To un pin a card, press on the un pin icon on the top left corner of the pinned card\
 
 # News Details Screen
 ....................
