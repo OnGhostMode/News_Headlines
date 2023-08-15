@@ -5,7 +5,7 @@
    Author:
    VIVEK PS
    Email: vivekpsanthosh@gmail.com
-   LinedIN: (https://www.linkedin.com/in/vivek-ps-9555b8111)
+   LinedIN: [Connect with vivek](https://www.linkedin.com/in/vivek-ps-9555b8111)
 ````
 
 # Screens
