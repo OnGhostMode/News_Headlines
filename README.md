@@ -1,4 +1,80 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# News Headlines - React Native
+------------------------------
+
+````
+   Author:
+   VIVEK PS
+   Email: vivekpsanthosh@gmail.com
+````
+
+# Screens
+........
+   1. Dashboard screen
+   2. News details screen
+
+# Dashboard Screen
+.................
+This screen contains the liist of news cards. After every 10 seconds, 5 random news would be added to the top of the lists.
+User can refresh the screen manually using pull to refresh or by pressing the refresh icon on the top left of the list.
+
+   1. News cards
+      ...........
+      Contains the basic details of a news
+      On taping the card, screen will navigate to news details screen, where the user can view the full details of that screen
+      News cards except the pinned card are equiped with swipe controls
+      On swiping from left, it reveals the pin to top option, on taping which pins that particular news card to top of the list
+
+   2. Pinned cards
+      ............
+      Pinned card wont be removed on refreshing the data or adding random news after every 10nseconds
+      Pinned cards will stay on the screen, unless it is unpinned
+      To un pin a card, press on the un pin icon on the top left corner of the pinned card
+
+# News Details Screen
+....................
+   This screen displays all the details available for the news, as received from API
+   To view the full news in browser, tap on the open in browser icon at the bottom of the screen
+
+
+# Offline Functionality
+......................
+All the data fetched from API are saved to local storage using AsyncStorage
+On app loading, it checks for available data in local storage. If data is available, it will be populated to redux
+
+# Redux Saga
+...........
+Inside the app, API calling and state management are done using redux saga
+On app launching, API call is performed using saga and received data is stored in redux for seemless operations
+
+# FAQ
+....
+
+1. How to pin a news card?
+A. Swipe from the left edge of the card you want to pin.
+   Pin Icon will be revealed on the left side
+   Tap on the pin and your caard will be pinned to top
+
+2. How to delete a news card?
+A. To delete a news card, swipe from the right edge of the screen
+   Delete icon will be revealed on the right side
+   Tap on the delete button to remove the card
+
+3. What happens on manually refreshing the list?
+A. On manual refresh, API will be called again to populate the data in redux
+   On successful refresh, 10 second timer for populating data in the list would be reset
+
+4. What is 'Open in browser' option for?
+A. Open in browser option is provided to naviagate to the corresponding web page of the news.
+   In side the web page, the detailed news can be accessed, which is not includede in the API
+
+5. How does offline functionality works?
+A. Offline functionality uses AsyncStorage to store the data received from API to device storage.
+   First time when the API returns result, it will be saved to offline. 
+   This data would be overwritten on every successful API call, to keep the latest availabel data in device storage.
+   When the app opens, the data stored in local storage would be retrieved and saved to redux.
+   Thus in case of offline mode, this locally saved data would be populated
+
+
 
 # Getting Started
 
@@ -41,39 +117,3 @@ npm run ios
 # OR using Yarn
 yarn ios
 ```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
