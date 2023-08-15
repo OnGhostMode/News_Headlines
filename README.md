@@ -14,66 +14,58 @@
    2. News details screen
 
 # Dashboard Screen
-------------------
 This screen contains the liist of news cards. After every 10 seconds, 5 random news would be added to the top of the lists.
 User can refresh the screen manually using pull to refresh or by pressing the refresh icon on the top left of the list.
 
    1. News cards\
-      ...........\
       Contains the basic details of a news\
       On taping the card, screen will navigate to news details screen, where the user can view the full details of that screen\
       News cards except the pinned card are equiped with swipe controls\
-      On swiping from left, it reveals the pin to top option, on taping which pins that particular news card to top of the list\
+      On swiping from left, it reveals the pin to top option, on taping which pins that particular news card to top of the list
 
    2. Pinned cards\
-      ............\
-      Pinned card wont be removed on refreshing the data or adding random news after every 10nseconds\
+      Pinned card wont be removed on refreshing the data or adding random news after every 10 seconds\
       Pinned cards will stay on the screen, unless it is unpinned\
-      To un pin a card, press on the un pin icon on the top left corner of the pinned card\
+      To un pin a card, press on the un pin icon on the top left corner of the pinned card
 
 # News Details Screen
-....................\
    This screen displays all the details available for the news, as received from API\
-   To view the full news in browser, tap on the open in browser icon at the bottom of the screen\
+   To view the full news in browser, tap on the open in browser icon at the bottom of the screen
 
 
 # Offline Functionality
-......................\
-All the data fetched from API are saved to local storage using AsyncStorage/
-On app loading, it checks for available data in local storage. If data is available, it will be populated to redux/
+All the data fetched from API are saved to local storage using AsyncStorage\
+On app loading, it checks for available data in local storage. If data is available, it will be populated to redux
 
 # Redux Saga
-...........\
 Inside the app, API calling and state management are done using redux saga\
-On app launching, API call is performed using saga and received data is stored in redux for seemless operations\
+On app launching, API call is performed using saga and received data is stored in redux for seemless operations
 
 # FAQ
-............
-
 1. How to pin a news card?\
 A. Swipe from the left edge of the card you want to pin.\
    Pin Icon will be revealed on the left side\
-   Tap on the pin and your caard will be pinned to top\
+   Tap on the pin and your caard will be pinned to top
 
 2. How to delete a news card?\
 A. To delete a news card, swipe from the right edge of the screen\
    Delete icon will be revealed on the right side\
-   Tap on the delete button to remove the card\
+   Tap on the delete button to remove the card
 
 3. What happens on manually refreshing the list?\
 A. On manual refresh, API will be called again to populate the data in redux\
-   On successful refresh, 10 second timer for populating data in the list would be reset\
+   On successful refresh, 10 second timer for populating data in the list would be reset
 
 4. What is 'Open in browser' option for?\
 A. Open in browser option is provided to naviagate to the corresponding web page of the news.\
-   In side the web page, the detailed news can be accessed, which is not includede in the API\
+   In side the web page, the detailed news can be accessed, which is not includede in the API
 
 5. How does offline functionality works?\
 A. Offline functionality uses AsyncStorage to store the data received from API to device storage.\
    First time when the API returns result, it will be saved to offline. \
    This data would be overwritten on every successful API call, to keep the latest availabel data in device storage.\
    When the app opens, the data stored in local storage would be retrieved and saved to redux.\
-   Thus in case of offline mode, this locally saved data would be populated\
+   Thus in case of offline mode, this locally saved data would be populated
 
 
 
