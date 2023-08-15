@@ -1,12 +1,12 @@
 # News Headlines - React Native
 ------------------------------
 
+```
    Author:
-   VIVEK PS
-   
->   Email: vivekpsanthosh@gmail.com
-   
->   LinedIN: [Connect with vivek](https://www.linkedin.com/in/vivek-ps-9555b8111)
+   VIVEK PS   
+   Email: vivekpsanthosh@gmail.com
+```
+>   LinedIn: [Connect with vivek](https://www.linkedin.com/in/vivek-ps-9555b8111)
 
 # Screens
 ........
