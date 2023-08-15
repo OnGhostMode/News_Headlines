@@ -40,7 +40,6 @@ const NewsList = ({ newsData, onDelete }) => {
      * @author VIVEK PS
      */
     const onPin = (item) => {
-        console.log("----------- onPin", item)
         setPinnedData(item)
     }
 
@@ -50,7 +49,6 @@ const NewsList = ({ newsData, onDelete }) => {
      * @author VIVEK PS
      */
     const onUnpin = () => {
-        console.log("----------- onUnpin")
         setPinnedData(null)
     }
 
@@ -60,7 +58,6 @@ const NewsList = ({ newsData, onDelete }) => {
      * @author VIVEK PS
      */
     const openDetailsScreen = (item) => {
-        console.log("----------- openDetailsScreen ", item)
         navigation.navigate('NewsScreen', { item: item })
     }
 

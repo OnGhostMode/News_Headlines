@@ -24,6 +24,7 @@ const Dashboard = () => {
     const [newsData, setNewsData] = useState([])
     const [isRefreshing, setRefreshing] = useState(false);
     const [timerReset, setTimerReset] = useState(1);
+    const [hasRefreshCalled, setRefreshCalled] = useState(false);
 
     /**
      * backgroundStyle(): Dynamic background style on pull to refresh
@@ -39,20 +40,32 @@ const Dashboard = () => {
      */
     useEffect(() => {
         try {
-            console.log("------------- updated newsReducerData ", newsReducerData)
             newsReducerDataTemp = newsReducerData
             let slicedArray = newsReducerDataTemp?.slice(0, 10);
             setNewsData(slicedArray)
+        } catch (error) {
+            console.log("------------- useeffect error ", error)
+        }
+    }, [])
+
+    /**
+     * Initializes states on update of redux
+     * @author VIVEK PS
+     */
+    useEffect(() => {
+        try {
+            if(hasRefreshCalled){
+            newsReducerDataTemp = newsReducerData
+            let slicedArray = newsReducerDataTemp?.slice(0, 10);
+            setNewsData(slicedArray)
+            setRefreshCalled(false)
+            }
             setRefreshing(false);
             setTimerReset(Math.random(12))
         } catch (error) {
             console.log("------------- useeffect error ", error)
         }
     }, [newsReducerData])
-
-    useEffect(() => {
-        console.log("------------- updated newsData ", newsData)
-    }, [newsData])
 
     /**
      * onPullToRefresh(): Actions to be performed on calling pull to refresh
@@ -63,6 +76,7 @@ const Dashboard = () => {
             setTimerReset(Math.random(12))
             setRefreshing(true);
             dispatch(fetchNewsData())
+            setRefreshCalled(true)
         } catch (error) {
             console.log("--------------- onPullToRefresh error ", error)
             setRefreshing(false)
@@ -75,17 +89,13 @@ const Dashboard = () => {
      * @author VIVEK PS
      */
     const onDelete = async (item) => {
-        console.log("----------- onDelete ", item)
-
         let newsDataTemp = newsData
         let newsDataFiltered = await newsDataTemp.filter(newsItem => {
             return (
                 newsItem?.title != item.title || newsItem?.author != item.author
             );
         })
-        console.log("----------- newsDataFiltered ", newsDataFiltered)
         setNewsData(newsDataFiltered)
-
 
         let newsReducerDataTemp = newsReducerData
         let newsReducerDataFiltered = await newsReducerDataTemp.filter(newsItem => {
@@ -93,7 +103,6 @@ const Dashboard = () => {
                 newsItem?.title != item.title || newsItem?.author != item.author
             );
         })
-        console.log("----------- newsReducerDataFiltered ", newsReducerDataFiltered)
         dispatch(updateNewsData(newsReducerDataFiltered))
     }
 
@@ -119,8 +128,6 @@ const Dashboard = () => {
             let newsReducerDataTemp = newsReducerData
             const shuffled = [...newsReducerDataTemp].sort(() => 0.5 - Math.random());
             let selected = shuffled.slice(0, 5);
-            console.log("\n\n ------------selected ", selected)
-            console.log("------------newsData ", newsData)
             let tempArray = []
             await selected.map((item) => {
                 tempArray.push(item)
@@ -129,10 +136,9 @@ const Dashboard = () => {
             await newsDataTemp.map((item) => {
                 tempArray.push(item)
             })
-            console.log("------------tempArray ", tempArray)
             setNewsData([...tempArray])
         } catch (error) {
-            console.log("xxxxxxxxxxxxxxx refreshListData error ", error)
+            console.log("--------------- refreshListData error ", error)
 
         }
     }

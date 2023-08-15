@@ -31,7 +31,6 @@ function App(): JSX.Element {
    */
   const init = async () => {
     const storedData = await getData();
-    console.log("============= storedData ", storedData)
     dispatch(retrieveDataFromLocal(storedData))
   }
 
