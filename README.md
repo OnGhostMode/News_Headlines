@@ -1,6 +1,14 @@
 # News Headlines - React Native
 ------------------------------
 
+````
+```
+# Author
+   VIVEK PS
+   Email: vivekpsanthosh@gmail.com
+```
+````
+
 # Screens
 ........
    1. Dashboard screen
