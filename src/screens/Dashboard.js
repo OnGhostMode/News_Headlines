@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { useDispatch, useSelector } from 'react-redux'
 import NewsList from '../components/NewsList'
-import { fetchNewsData } from '../redux/actions/NewsReducerActions'
+import { fetchNewsData, updateNewsData } from '../redux/actions/NewsReducerActions'
 
 const Dashboard = () => {
 
@@ -24,11 +24,13 @@ const Dashboard = () => {
     const [newsData, setNewsData] = useState([])
     const [isRefreshing, setRefreshing] = useState(false);
     const [timerReset, setTimerReset] = useState(1);
+    const [hasRefreshCalled, setRefreshCalled] = useState(false);
 
     /**
      * backgroundStyle(): Dynamic background style on pull to refresh
      */
     const backgroundStyle = {
+        flex: 1,
         backgroundColor: isRefreshing ? '#3395ff' : '#FFFFFF',
     };
 
@@ -38,20 +40,32 @@ const Dashboard = () => {
      */
     useEffect(() => {
         try {
-            console.log("------------- updated newsReducerData ", newsReducerData)
             newsReducerDataTemp = newsReducerData
             let slicedArray = newsReducerDataTemp?.slice(0, 10);
             setNewsData(slicedArray)
+        } catch (error) {
+            console.log("------------- useeffect error ", error)
+        }
+    }, [])
+
+    /**
+     * Initializes states on update of redux
+     * @author VIVEK PS
+     */
+    useEffect(() => {
+        try {
+            if(hasRefreshCalled){
+            newsReducerDataTemp = newsReducerData
+            let slicedArray = newsReducerDataTemp?.slice(0, 10);
+            setNewsData(slicedArray)
+            setRefreshCalled(false)
+            }
             setRefreshing(false);
             setTimerReset(Math.random(12))
         } catch (error) {
             console.log("------------- useeffect error ", error)
         }
     }, [newsReducerData])
-
-    useEffect(() => {
-        console.log("------------- updated newsData ", newsData)
-    }, [newsData])
 
     /**
      * onPullToRefresh(): Actions to be performed on calling pull to refresh
@@ -61,10 +75,10 @@ const Dashboard = () => {
         try {
             setTimerReset(Math.random(12))
             setRefreshing(true);
-            console.log("------------ isRefreshing")
             dispatch(fetchNewsData())
+            setRefreshCalled(true)
         } catch (error) {
-            console.log("xxxxxxxxxxxxxxx onPullToRefresh error ", error)
+            console.log("--------------- onPullToRefresh error ", error)
             setRefreshing(false)
         }
     };
@@ -74,8 +88,22 @@ const Dashboard = () => {
      * @param {*} item 
      * @author VIVEK PS
      */
-    const onDelete = (item) => {
-        console.log("----------- onDelete ", item)
+    const onDelete = async (item) => {
+        let newsDataTemp = newsData
+        let newsDataFiltered = await newsDataTemp.filter(newsItem => {
+            return (
+                newsItem?.title != item.title || newsItem?.author != item.author
+            );
+        })
+        setNewsData(newsDataFiltered)
+
+        let newsReducerDataTemp = newsReducerData
+        let newsReducerDataFiltered = await newsReducerDataTemp.filter(newsItem => {
+            return (
+                newsItem?.title != item.title || newsItem?.author != item.author
+            );
+        })
+        dispatch(updateNewsData(newsReducerDataFiltered))
     }
 
     /**
@@ -100,8 +128,6 @@ const Dashboard = () => {
             let newsReducerDataTemp = newsReducerData
             const shuffled = [...newsReducerDataTemp].sort(() => 0.5 - Math.random());
             let selected = shuffled.slice(0, 5);
-            console.log("\n\n ------------selected ", selected)
-            console.log("------------newsData ", newsData)
             let tempArray = []
             await selected.map((item) => {
                 tempArray.push(item)
@@ -110,10 +136,9 @@ const Dashboard = () => {
             await newsDataTemp.map((item) => {
                 tempArray.push(item)
             })
-            console.log("------------tempArray ", tempArray)
             setNewsData([...tempArray])
         } catch (error) {
-            console.log("xxxxxxxxxxxxxxx refreshListData error ", error)
+            console.log("--------------- refreshListData error ", error)
 
         }
     }
@@ -153,6 +178,7 @@ export default Dashboard
 
 const styles = StyleSheet.create({
     safeAreaView: {
+        flex: 1,
         backgroundColor: 'white'
     },
     sectionContainer: {

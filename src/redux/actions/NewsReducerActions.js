@@ -31,6 +31,19 @@ export const retrieveDataFromLocal = (data) => {
 };
 
 /**
+ * updateNewsData(): Updates news data from payload provided
+ * @param {*} data 
+ * @returns 
+ * @author VIVEK PS
+ */
+export const updateNewsData = (data) => {
+    return {
+        type: ACTION_TYPES.UPDATE_NEWS_DATA_REQUEST,
+        payload: data
+    };
+};
+
+/**
  * clearNewsData(): Clears saved news data from redux
  * @returns 
  * @author VIVEK PS
