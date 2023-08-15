@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { useDispatch, useSelector } from 'react-redux'
 import NewsList from '../components/NewsList'
-import { fetchNewsData } from '../redux/actions/NewsReducerActions'
+import { fetchNewsData, updateNewsData } from '../redux/actions/NewsReducerActions'
 
 const Dashboard = () => {
 
@@ -29,6 +29,7 @@ const Dashboard = () => {
      * backgroundStyle(): Dynamic background style on pull to refresh
      */
     const backgroundStyle = {
+        flex: 1,
         backgroundColor: isRefreshing ? '#3395ff' : '#FFFFFF',
     };
 
@@ -61,10 +62,9 @@ const Dashboard = () => {
         try {
             setTimerReset(Math.random(12))
             setRefreshing(true);
-            console.log("------------ isRefreshing")
             dispatch(fetchNewsData())
         } catch (error) {
-            console.log("xxxxxxxxxxxxxxx onPullToRefresh error ", error)
+            console.log("--------------- onPullToRefresh error ", error)
             setRefreshing(false)
         }
     };
@@ -74,8 +74,27 @@ const Dashboard = () => {
      * @param {*} item 
      * @author VIVEK PS
      */
-    const onDelete = (item) => {
+    const onDelete = async (item) => {
         console.log("----------- onDelete ", item)
+
+        let newsDataTemp = newsData
+        let newsDataFiltered = await newsDataTemp.filter(newsItem => {
+            return (
+                newsItem?.title != item.title || newsItem?.author != item.author
+            );
+        })
+        console.log("----------- newsDataFiltered ", newsDataFiltered)
+        setNewsData(newsDataFiltered)
+
+
+        let newsReducerDataTemp = newsReducerData
+        let newsReducerDataFiltered = await newsReducerDataTemp.filter(newsItem => {
+            return (
+                newsItem?.title != item.title || newsItem?.author != item.author
+            );
+        })
+        console.log("----------- newsReducerDataFiltered ", newsReducerDataFiltered)
+        dispatch(updateNewsData(newsReducerDataFiltered))
     }
 
     /**
@@ -153,6 +172,7 @@ export default Dashboard
 
 const styles = StyleSheet.create({
     safeAreaView: {
+        flex: 1,
         backgroundColor: 'white'
     },
     sectionContainer: {
