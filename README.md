@@ -6,7 +6,7 @@
    VIVEK PS   
    Email: vivekpsanthosh@gmail.com
 ```
->   LinedIn: [Connect with vivek](https://www.linkedin.com/in/vivek-ps-9555b8111)
+>   LinedIn: [Connect with Vivek](https://www.linkedin.com/in/vivek-ps-9555b8111)
 
 # Screens
 ........
