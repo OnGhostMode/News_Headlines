@@ -2,11 +2,9 @@
 ------------------------------
 
 ````
-```
-# Author
+   Author:
    VIVEK PS
    Email: vivekpsanthosh@gmail.com
-```
 ````
 
 # Screens
