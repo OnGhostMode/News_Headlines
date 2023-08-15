@@ -13,10 +13,16 @@ const initialState = {};
 const NewsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ACTION_TYPES.FETCH_NEWS_DATA_RESPONSE:
-            return { ...state, newsData: action.payload };
+            return {
+                ...state,
+                newsData: action.payload || []
+            };
 
         case ACTION_TYPES.FETCH_NEWS_DATA_CLEAR:
-            return { ...state, newsData: {} };
+            return {
+                ...state,
+                newsData: []
+            };
 
         default:
             return state;

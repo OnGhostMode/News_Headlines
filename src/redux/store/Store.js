@@ -10,6 +10,7 @@ import rootSaga from '../saga/Saga';
  * @param key: Key for the redux-persist
  * @param storage: Storage used for the redux-persist
  * @param whitelist: Redux state values that has to be saved to device storage
+ * @author VIVEK PS
  */
 const persistConfig = {
     key: 'root',
@@ -24,6 +25,9 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware]
 const reducer = persistReducer(persistConfig, reducers);
 
+/**
+ * retrieveStore(): connects redux saga store
+ */
 export default function retrieveStore() {
     const store = configureStore({
         reducer,
@@ -33,6 +37,5 @@ export default function retrieveStore() {
 
     const persistor = persistStore(store);
     sagaMiddleware.run(rootSaga, store.dispatch);
-
     return { persistor, store };
 }
