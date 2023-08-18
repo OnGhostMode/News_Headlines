@@ -54,11 +54,11 @@ const Dashboard = () => {
      */
     useEffect(() => {
         try {
-            if(hasRefreshCalled){
-            newsReducerDataTemp = newsReducerData
-            let slicedArray = newsReducerDataTemp?.slice(0, 10);
-            setNewsData(slicedArray)
-            setRefreshCalled(false)
+            if (hasRefreshCalled) {
+                newsReducerDataTemp = newsReducerData
+                let slicedArray = newsReducerDataTemp?.slice(0, 10);
+                setNewsData(slicedArray)
+                setRefreshCalled(false)
             }
             setRefreshing(false);
             setTimerReset(Math.random(12))
@@ -128,15 +128,8 @@ const Dashboard = () => {
             let newsReducerDataTemp = newsReducerData
             const shuffled = [...newsReducerDataTemp].sort(() => 0.5 - Math.random());
             let selected = shuffled.slice(0, 5);
-            let tempArray = []
-            await selected.map((item) => {
-                tempArray.push(item)
-            })
-            let newsDataTemp = newsData
-            await newsDataTemp.map((item) => {
-                tempArray.push(item)
-            })
-            setNewsData([...tempArray])
+
+            setNewsData((newdDataTemp) => { return [...selected,...newdDataTemp] } )
         } catch (error) {
             console.log("--------------- refreshListData error ", error)
 

@@ -166,7 +166,7 @@ const NewsList = ({ newsData, onDelete }) => {
                 <ImageBackground source={require('../resources/placeholder_image.jpeg')} resizeMode="cover" style={styles.imageBackground}>
                     <Image
                         style={styles.image}
-                        source={{ uri: data.urlToImage } || require('../resources/placeholder_image.jpeg')}
+                        source={data?.urlToImage ? { uri: data?.urlToImage } : require('../resources/placeholder_image.jpeg')}
                         loadingIndicatorSource={require('../resources/placeholder_image.jpeg')}
                     />
                 </ImageBackground>

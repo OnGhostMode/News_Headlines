@@ -24,7 +24,6 @@ const NewsScreen = ({ route }) => {
                     <Image
                         style={styles.image}
                         source={{ uri: item.urlToImage } || require('../resources/placeholder_image.jpeg')}
-                        defaultSource={require('../resources/placeholder_image.jpeg')}
                         loadingIndicatorSource={require('../resources/placeholder_image.jpeg')}
                     />
                 </ImageBackground>
@@ -37,7 +36,7 @@ const NewsScreen = ({ route }) => {
 
                 <View style={styles.authorContainer}>
                     <Text style={styles.source}>Source: {item?.source?.name}</Text>
-                    <Text style={styles.author}>- {item.author || 'Author'}</Text>
+                    <Text style={styles.author}>Author: {item.author || 'Author'}</Text>
                 </View>
 
                 <TouchableOpacity style={styles.externalLink} onPress={() => {
@@ -56,11 +55,8 @@ export default NewsScreen
 const styles = StyleSheet.create({
     mainView: {
         flex: 1,
-        flexWrap: 'wrap',
         borderWidth: 1,
         borderColor: 'lightgrey',
-        overflow: 'hidden',
-
     },
     dateTime: {
         color: 'grey',
@@ -81,37 +77,29 @@ const styles = StyleSheet.create({
         color: '#5A5A5A',
         fontSize: 16,
         marginVertical: 10,
-        lineHeight:25
+        lineHeight: 25
     },
     description: {
         color: '#5A5A5A',
         fontSize: 16,
-        // flex: 1,
         marginVertical: 10,
-        lineHeight:25
+        lineHeight: 25
     },
-    authorContainer:{
-        flex:1,
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'space-between',
-        marginTop:10
+    authorContainer: {
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 10
     },
     author: {
         color: '#828282',
         fontSize: 12,
         fontWeight: 'bold',
-        // flex: 1,
-        // alignSelf: 'flex-end',
-        // backgroundColor:'red'
     },
     source: {
         color: '#828282',
         fontSize: 14,
         fontWeight: 'bold',
-        // flex: 1,
-        // alignSelf: 'flex-start',
-        // backgroundColor:'red'
+        flexWrap:'wrap'
     },
     imageContainer: {
         flex: 1,
@@ -128,7 +116,7 @@ const styles = StyleSheet.create({
     detailsContainer: {
         flex: 1,
         padding: 10,
-        // backgroundColor: 'red',
+        backgroundColor: 'red',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         backgroundColor: '#F2F2F2'
